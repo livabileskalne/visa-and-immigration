@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WorkFlex — Visa &amp; Immigration</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #1a9e8f;
+    --teal-light: #e8f5f3;
+    --teal-dark: #0d7a6e;
+    --pink: #e8195a;
+    --pink-hover: #c9144d;
+    --dark: #1a1f2e;
+    --gray: #6b7280;
+    --gray-light: #f7f8fa;
+    --border: #e5e7eb;
+    --white: #ffffff;
+    --card-bg: #f9fafb;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.3px;
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-cta {
+    background: var(--pink);
+    color: var(--white);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-cta:hover { background: var(--pink-hover); }
+
+  /* ─── HERO ─── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 80px 80px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--gray);
+    line-height: 1.65;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .btn-primary {
+    background: var(--pink);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--pink-hover); }
+  .btn-text {
+    color: var(--pink);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-text:hover { text-decoration: underline; }
+
+  .hero-visual {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 460px;
+    background: linear-gradient(135deg, #2d6a63 0%, #1a4a45 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-visual-placeholder {
+    color: rgba(255,255,255,0.3);
+    font-size: 14px;
+    text-align: center;
+  }
+  .hero-card {
+    position: absolute;
+    background: white;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .hero-card-top {
+    top: 40px;
+    right: 40px;
+    min-width: 220px;
+  }
+  .hero-card-bottom {
+    bottom: 40px;
+    left: 40px;
+    min-width: 260px;
+  }
+  .hero-card-label {
+    font-size: 10px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .hero-card-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .flag { font-size: 16px; }
+  .arrow-small { color: var(--gray); font-size: 12px; }
+  .hero-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+  .hero-todo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--dark);
+    margin-bottom: 7px;
+  }
+  .check-done {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 9px;
+  }
+  .check-pending {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    flex-shrink: 0;
+  }
+
+  /* ─── LOGO BAR ─── */
+  .logo-bar {
+    border-top: 1px solid var(--border);
+    padding: 28px 80px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  .logo-bar-text {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.4;
+    min-width: 200px;
+  }
+  .logos {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .logo-item {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9ca3af;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 90px 80px; }
+  .section-inner { max-width: 1240px; margin: 0 auto; }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--teal);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .section-title {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--gray);
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+    line-height: 1.65;
+  }
+
+  /* ─── CHALLENGE ─── */
+  .challenge { background: var(--white); }
+  .challenge-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .challenge-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    background: var(--white);
+  }
+  .challenge-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--teal-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  .challenge-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .challenge-card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ─── USE CASES ─── */
+  .use-cases { background: var(--gray-light); }
+  .use-case-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 36px;
+  }
+  .uc-tab {
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 160px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .uc-tab.active { opacity: 1; }
+  .uc-tab-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    background: transparent;
+    transition: background 0.2s;
+  }
+  .uc-tab.active .uc-tab-icon {
+    background: var(--teal-light);
+  }
+  .uc-tab-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .uc-content {
+    display: none;
+    background: var(--teal-light);
+    border-radius: 20px;
+    padding: 56px 64px;
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .uc-content.active { display: grid; }
+  .uc-content-text h3 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .uc-content-text p {
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .uc-content-img {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 300px;
+    background: linear-gradient(135deg, #2d6a63, #1a4a45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 13px;
+  }
+
+  /* ─── SOLUTION (alternating) ─── */
+  .solution { background: var(--white); }
+  .solution-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 90px;
+  }
+  .solution-row:last-child { margin-bottom: 0; }
+  .solution-row.reverse { direction: rtl; }
+  .solution-row.reverse > * { direction: ltr; }
+  .solution-text h3 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
+    color: var(--dark);
+    margin-bottom: 28px;
+  }
+  .solution-bullets { list-style: none; }
+  .solution-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .solution-bullets li::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .solution-visual {
+    background: #0d4a42;
+    border-radius: 20px;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+  }
+
+  /* ─── FEATURES (Before/During/After) ─── */
+  .features { background: var(--gray-light); }
+  .phase-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+  .phase-tab-group {
+    background: var(--white);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .phase-tab {
+    padding: 10px 32px;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .phase-tab.active {
+    background: var(--pink);
+    color: var(--white);
+  }
+  .phase-panel { display: none; }
+  .phase-panel.active { display: block; }
+  .feature-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .feature-card h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .feature-card .tag {
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 600;
+    background: var(--teal-light);
+    padding: 3px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+  .feature-bullets { list-style: none; flex: 1; }
+  .feature-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .feature-bullets li::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .feature-card-visual {
+    margin-top: 28px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* ─── BOTTOM CTA ─── */
+  .bottom-cta {
+    background: var(--teal-light);
+    padding: 90px 80px;
+  }
+  .bottom-cta-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .cta-left h2 {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+  .cta-left p {
+    font-size: 16px;
+    color: #374151;
+    line-height: 1.65;
+    margin-bottom: 32px;
+  }
+  .cta-discover-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  .cta-discover-list { list-style: none; margin-bottom: 40px; }
+  .cta-discover-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .cta-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 10px;
+    margin-top: 1px;
+  }
+  .cta-logos {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+  .cta-logo {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9ca3af;
+  }
+
+  /* Form */
+  .cta-form {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dark);
+  }
+  .form-group input,
+  .form-group select {
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 100px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--teal); }
+  .form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .form-consent input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+  .form-consent a { color: var(--teal); }
+  .btn-submit {
+    width: 100%;
+    background: var(--pink);
+    color: var(--white);
+    border: none;
+    padding: 16px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--pink-hover); }
+
+  /* ─── RESPONSIVE (basic) ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    section { padding: 60px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 48px 24px; }
+    .hero h1 { font-size: 36px; }
+    .hero-visual { display: none; }
+    .challenge-cards { grid-template-columns: 1fr; }
+    .uc-content { grid-template-columns: 1fr; }
+    .solution-row { grid-template-columns: 1fr; gap: 40px; }
+    .solution-row.reverse { direction: ltr; }
+    .feature-cards { grid-template-columns: 1fr; }
+    .bottom-cta-inner { grid-template-columns: 1fr; }
+    .logo-bar { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Work<span>Flex</span></div>
+  <button class="nav-cta">Book a demo</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<div style="max-width:1400px; margin: 0 auto;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Visa &amp; Immigration <span style="font-size:10px;background:var(--teal-light);color:var(--teal);padding:2px 8px;border-radius:100px;letter-spacing:0.5px;margin-left:4px;">BETA</span></div>
+      <h1>Work permits and visas handled — so your employees can work compliantly from day one.</h1>
+      <p class="hero-sub">From right-to-work check to permit in hand, WorkFlex manages the full visa and immigration process for foreign local hires and international moves on your behalf.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary">Book a demo</button>
+        <a class="btn-text">Download guide</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card hero-card-top">
+        <div class="hero-card-label">Moving to</div>
+        <div class="hero-card-value">
+          <span class="flag">🇩🇪</span> Germany <span class="arrow-small">→</span> <span class="flag">🇸🇬</span> Singapore
+        </div>
+        <div style="margin-top:12px;">
+          <div class="hero-card-label">Work permit status</div>
+          <div class="hero-card-value" style="color: var(--teal);">✓ Permit approved</div>
+        </div>
+      </div>
+
+      <div class="hero-card hero-card-bottom">
+        <div class="hero-card-title">Visa case to-dos</div>
+        <div class="hero-todo-item"><div class="check-done">✓</div> Right-to-work check completed</div>
+        <div class="hero-todo-item"><div class="check-done">✓</div> Visa pathway confirmed</div>
+        <div class="hero-todo-item"><div class="check-done">✓</div> Work permit application submitted</div>
+        <div class="hero-todo-item"><div class="check-pending"></div> Authority confirmation pending</div>
+        <div class="hero-todo-item"><div class="check-pending"></div> Apply for dependent visa</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-bar-text">Hundreds of companies trust WorkFlex to manage global mobility compliance</div>
+  <div class="logos">
+    <span class="logo-item">CARFAX</span>
+    <span class="logo-item">ALDI</span>
+    <span class="logo-item">TUI</span>
+    <span class="logo-item">Red Bull</span>
+    <span class="logo-item">dm</span>
+    <span class="logo-item">LONDON&nbsp;STOCK&nbsp;EXCHANGE</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CHALLENGE
+══════════════════════════════════════════ -->
+<section class="challenge">
+  <div class="section-inner">
+    <div class="eyebrow">The Challenge</div>
+    <h2 class="section-title">Where visa and immigration cases break down</h2>
+
+    <div class="challenge-cards">
+      <div class="challenge-card">
+        <div class="challenge-icon">🔍</div>
+        <h3>You don't know if they can work there until it's too late</h3>
+        <p>Most companies discover right-to-work blockers deep into the process — when stopping is almost as costly as proceeding with risk.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">🔀</div>
+        <h3>Too many handoffs. No single owner.</h3>
+        <p>Work permits, authority communications, document preparation, family visas — each piece has a different owner, a different timeline, and a different way to fall through the cracks.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">⚠️</div>
+        <h3>The employee moves. The work permit doesn't follow.</h3>
+        <p>A completed move doesn't mean the work permit is in place. The gap between arriving in a new country and being cleared to work is where risk — and operational disruption — lives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     USE CASES
+══════════════════════════════════════════ -->
+<section class="use-cases">
+  <div class="section-inner">
+    <div class="eyebrow">Use Cases</div>
+    <h2 class="section-title">Which visa and immigration scenarios<br>does WorkFlex cover?</h2>
+    <p class="section-sub">From foreign local hires to long-term moves — WorkFlex handles the visa and immigration process for any scenario, ensuring your employee has the permit to work from day one.</p>
+
+    <div class="use-case-tabs">
+      <button class="uc-tab active" onclick="switchUC(0)">
+        <div class="uc-tab-icon">🌐</div>
+        <span class="uc-tab-label">Foreign local hire</span>
+      </button>
+      <button class="uc-tab" onclick="switchUC(1)">
+        <div class="uc-tab-icon">✈️</div>
+        <span class="uc-tab-label">Move an employee to a new country</span>
+      </button>
+    </div>
+
+    <div id="uc-0" class="uc-content active">
+      <div class="uc-content-text">
+        <h3>Hire a foreign national locally — with the work permit in place before day one</h3>
+        <p>Hiring a foreign national directly into a local entity — for example, bringing a critical hire from outside the EU into Germany? WorkFlex handles the right-to-work check, work permit application, and every visa step from offer acceptance to first working day. Your new hire has the permit to work, not just an onboarding date.</p>
+        <button class="btn-primary">Book a demo</button>
+      </div>
+      <div class="uc-content-img" style="background:#0d4a42; padding:28px; align-items:flex-start; flex-direction:column; gap:12px;">
+        <div style="background:white;border-radius:12px;padding:16px 18px;width:100%;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#ddd;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:14px;">👤</div>
+            <div><div style="font-size:13px;font-weight:700;color:#1a1f2e;">Sarah Chen</div><div style="font-size:11px;color:#6b7280;">Head of Product</div></div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:#1a1f2e;">🇺🇸 <span style="color:#9ca3af;">→</span> 🇩🇪</div>
+          </div>
+          <div style="background:#f0fdf9;border-radius:8px;padding:10px 14px;margin-bottom:8px;">
+            <div style="font-size:10px;color:#1a9e8f;font-weight:700;letter-spacing:1px;margin-bottom:4px;">RIGHT-TO-WORK CHECK</div>
+            <div style="font-size:13px;font-weight:700;color:#1a9e8f;">✓ Eligible to work in Germany</div>
+            <div style="font-size:11px;color:#374151;margin-top:2px;">EU Blue Card pathway recommended</div>
+          </div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:6px;">Requested documents</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span style="background:#f3f4f6;border-radius:100px;padding:3px 10px;font-size:11px;color:#374151;">Work permit</span>
+            <span style="background:#f3f4f6;border-radius:100px;padding:3px 10px;font-size:11px;color:#374151;">Visa application</span>
+          </div>
+        </div>
+        <div style="background:white;border-radius:12px;padding:14px 18px;width:100%;">
+          <div style="font-size:12px;font-weight:700;color:#1a1f2e;margin-bottom:10px;">Visa case to-dos</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:#1a1f2e;"><span style="width:14px;height:14px;border-radius:50%;background:#1a9e8f;display:flex;align-items:center;justify-content:center;color:white;font-size:8px;flex-shrink:0;">✓</span>Submit RTW check</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:#1a1f2e;"><span style="width:14px;height:14px;border-radius:50%;background:#1a9e8f;display:flex;align-items:center;justify-content:center;color:white;font-size:8px;flex-shrink:0;">✓</span>Upload degree certificate</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:#6b7280;"><span style="width:14px;height:14px;border-radius:50%;border:2px solid #1a9e8f;flex-shrink:0;"></span>Submit Blue Card application</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px;color:#6b7280;"><span style="width:14px;height:14px;border-radius:50%;border:2px solid #d1d5db;flex-shrink:0;"></span>Register with local authorities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="uc-1" class="uc-content">
+      <div class="uc-content-text">
+        <h3>Move an employee to a new country — including long-term moves and assignment extensions</h3>
+        <p>Moving an existing employee to a new country entity long-term? WorkFlex manages the full visa and immigration process for long-term moves — work permits, dependent visas, and local registration where required — so the move is backed by the right permit from the start.</p>
+        <button class="btn-primary">Book a demo</button>
+      </div>
+      <div class="uc-content-img" style="background:#0d4a42; padding:28px; align-items:flex-start; flex-direction:column; gap:12px;">
+        <div style="background:white;border-radius:12px;padding:16px 18px;width:100%;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:14px;">👤</div>
+            <div><div style="font-size:13px;font-weight:700;color:#1a1f2e;">Marcus Weber</div><div style="font-size:11px;color:#6b7280;">Country Manager</div></div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12px;color:#1a1f2e;">🇩🇪 <span style="color:#9ca3af;">→</span> 🇳🇴</div>
+          </div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:8px;">Visa documents</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#f9fafb;border-radius:8px;padding:8px 12px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="background:#ef4444;color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;">PDF</span><div><div style="font-size:12px;font-weight:600;color:#1a1f2e;">Work permit application.pdf</div><div style="font-size:10px;color:#6b7280;">Submitted 14/04/2026</div></div></div>
+              <span style="font-size:10px;font-weight:600;color:#1a9e8f;background:#e8f5f3;padding:3px 8px;border-radius:100px;">✓ Completed</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#f9fafb;border-radius:8px;padding:8px 12px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="background:#ef4444;color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;">PDF</span><div><div style="font-size:12px;font-weight:600;color:#1a1f2e;">Dependent visa — spouse.pdf</div><div style="font-size:10px;color:#6b7280;">Submitted 14/04/2026</div></div></div>
+              <span style="font-size:10px;font-weight:600;color:#1a9e8f;background:#e8f5f3;padding:3px 8px;border-radius:100px;">✓ Completed</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#f9fafb;border-radius:8px;padding:8px 12px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="background:#ef4444;color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;">PDF</span><div><div style="font-size:12px;font-weight:600;color:#1a1f2e;">Local registration confirmation.pdf</div><div style="font-size:10px;color:#6b7280;">Pending authority response</div></div></div>
+              <span style="font-size:10px;font-weight:600;color:#f59e0b;background:#fef3c7;padding:3px 8px;border-radius:100px;">In progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SOLUTION (alternating rows)
+══════════════════════════════════════════ -->
+<section class="solution">
+  <div class="section-inner">
+    <div class="eyebrow">Why WorkFlex</div>
+    <h2 class="section-title">Visa and immigration support at every<br>stage of the move</h2>
+    <p class="section-sub" style="margin-bottom:72px;">WorkFlex ensures your employee has the permit to work — with the right checks, applications, and coordination in place before, during, and after the move.</p>
+
+    <!-- Row 1: text left, visual right -->
+    <div class="solution-row">
+      <div class="solution-text">
+        <h3>Know the right-to-work status before you commit</h3>
+        <ul class="solution-bullets">
+          <li>Right-to-work and right-to-hire checks completed within 1 business day — before any move is initiated</li>
+          <li>Clear Yes/No output with a recommended visa pathway if authorization isn't in place</li>
+          <li>Early flagging of gaps: missing qualifications, document requirements, sponsorship needs</li>
+        </ul>
+      </div>
+      <div class="solution-visual" style="flex-direction:column;align-items:stretch;padding:28px;gap:12px;height:auto;">
+        <div style="background:white;border-radius:14px;padding:20px 22px;box-shadow:0 4px 20px rgba(0,0,0,0.18);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;color:#1a9e8f;margin-bottom:12px;">RIGHT-TO-WORK CHECK</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:16px;">👤</div>
+            <div><div style="font-size:13px;font-weight:700;color:#1a1f2e;">Aiko Tanaka</div><div style="font-size:11px;color:#6b7280;">VP of Engineering</div></div>
+            <div style="margin-left:auto;font-size:13px;">🇯🇵 → 🇩🇪</div>
+          </div>
+          <div style="background:#f0fdf9;border:1.5px solid #1a9e8f;border-radius:10px;padding:14px 16px;margin-bottom:12px;">
+            <div style="font-size:18px;font-weight:700;color:#1a9e8f;margin-bottom:2px;">✓ Yes — eligible to work</div>
+            <div style="font-size:12px;color:#374151;">EU Blue Card pathway recommended</div>
+          </div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:8px;">Recommended next steps</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#1a1f2e;"><span style="color:#1a9e8f;font-weight:700;">1.</span> Obtain employer sponsorship letter</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#1a1f2e;"><span style="color:#1a9e8f;font-weight:700;">2.</span> Submit degree recognition documents</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#1a1f2e;"><span style="color:#1a9e8f;font-weight:700;">3.</span> Apply at German consulate</div>
+          </div>
+          <button style="margin-top:14px;width:100%;background:#e8195a;color:white;border:none;border-radius:100px;padding:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">Create visa case →</button>
+        </div>
+        <div style="color:rgba(255,255,255,0.4);font-size:11px;text-align:center;">Result delivered within 1 business day</div>
+      </div>
+    </div>
+
+    <!-- Row 2: visual left, text right -->
+    <div class="solution-row reverse">
+      <div class="solution-text">
+        <h3>Own the immigration process end-to-end</h3>
+        <ul class="solution-bullets">
+          <li>Work permit and long-term visa applications handled in full</li>
+          <li>Direct coordination with local authorities — WorkFlex owns the communication, not HR</li>
+          <li>Document preparation and review before every submission</li>
+          <li>Dependent and family visa support run in parallel, not as an afterthought</li>
+        </ul>
+      </div>
+      <div class="solution-visual" style="flex-direction:column;align-items:stretch;padding:28px;gap:12px;height:auto;">
+        <div style="background:white;border-radius:14px;padding:18px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.18);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #f3f4f6;">
+            <div style="width:34px;height:34px;border-radius:50%;background:#e5e7eb;display:flex;align-items:center;justify-content:center;font-size:15px;">👤</div>
+            <div><div style="font-size:13px;font-weight:700;color:#1a1f2e;">Jonas Berg</div><div style="font-size:11px;color:#6b7280;">Sales Director</div></div>
+            <div style="margin-left:auto;font-size:13px;">🇩🇪 → 🇸🇬</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:700;color:#1a1f2e;">Document center</div>
+            <div style="font-size:11px;color:#1a9e8f;font-weight:600;text-decoration:underline;cursor:pointer;">Download all</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #f3f4f6;border-radius:8px;padding:9px 12px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="background:#ef4444;color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;">PDF</span><div><div style="font-size:12px;font-weight:600;color:#1a1f2e;">Work permit application.pdf</div><div style="font-size:10px;color:#6b7280;">9:12AM  18/04/2026</div></div></div>
+              <span style="width:8px;height:8px;border-radius:50%;background:#1a9e8f;display:inline-block;"></span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #f3f4f6;border-radius:8px;padding:9px 12px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="background:#ef4444;color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;">PDF</span><div><div style="font-size:12px;font-weight:600;color:#1a1f2e;">Authority submission confirmation.pdf</div><div style="font-size:10px;color:#6b7280;">2:44PM  18/04/2026</div></div></div>
+              <span style="width:8px;height:8px;border-radius:50%;background:#1a9e8f;display:inline-block;"></span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;border:1px solid #f3f4f6;border-radius:8px;padding:9px 12px;">
+              <div style="display:flex;align-items:center;gap:8px;"><span style="background:#ef4444;color:white;font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;">PDF</span><div><div style="font-size:12px;font-weight:600;color:#1a1f2e;">Dependent visa — partner.pdf</div><div style="font-size:10px;color:#6b7280;">2:51PM  18/04/2026</div></div></div>
+              <span style="width:8px;height:8px;border-radius:50%;background:#1a9e8f;display:inline-block;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: text left, visual right -->
+    <div class="solution-row">
+      <div class="solution-text">
+        <h3>Support doesn't stop when the move is done</h3>
+        <ul class="solution-bullets">
+          <li>Guidance on local registration where relevant to the visa process</li>
+          <li>Ongoing visa tracking with proactive alerts as permit renewals approach</li>
+          <li>All visa case documents stored in one place — accessible whenever you need them</li>
+        </ul>
+      </div>
+      <div class="solution-visual" style="flex-direction:column;align-items:stretch;padding:28px;gap:12px;height:auto;">
+        <div style="background:white;border-radius:10px;padding:12px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.18);">
+          <div style="display:flex;align-items:center;gap:8px;background:#fef9ec;border:1px solid #fbbf24;border-radius:8px;padding:10px 14px;margin-bottom:14px;">
+            <span style="width:28px;height:28px;border-radius:50%;background:#1a9e8f;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🔔</span>
+            <div style="font-size:12px;font-weight:600;color:#1a1f2e;">Work permit renewal due in 60 days<br><span style="font-weight:400;color:#6b7280;">Action required — Marcus Weber, Norway</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0;font-size:10px;font-weight:700;color:#9ca3af;letter-spacing:0.5px;padding:0 8px;margin-bottom:8px;">
+            <span>EMPLOYEE</span><span>HOST</span><span>DURATION</span><span>STATUS</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:8px;border-radius:6px;font-size:12px;align-items:center;">
+              <span style="font-weight:600;color:#1a1f2e;">Sarah Chen</span><span>🇩🇪</span><span style="color:#6b7280;">Permanent</span><span style="color:#1a9e8f;font-weight:600;">● Active</span>
+            </div>
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:8px;border-radius:6px;font-size:12px;align-items:center;background:#f9fafb;">
+              <span style="font-weight:600;color:#1a1f2e;">Marcus Weber</span><span>🇳🇴</span><span style="color:#6b7280;">Permanent</span><span style="color:#f59e0b;font-weight:600;">● Renewal due</span>
+            </div>
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:8px;border-radius:6px;font-size:12px;align-items:center;">
+              <span style="font-weight:600;color:#1a1f2e;">Aiko Tanaka</span><span>🇩🇪</span><span style="color:#6b7280;">Permanent</span><span style="color:#1a9e8f;font-weight:600;">● Active</span>
+            </div>
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;padding:8px;border-radius:6px;font-size:12px;align-items:center;background:#f9fafb;">
+              <span style="font-weight:600;color:#1a1f2e;">Jonas Berg</span><span>🇸🇬</span><span style="color:#6b7280;">In progress</span><span style="color:#6b7280;font-weight:600;">● Pending</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: visual left, text right -->
+    <div class="solution-row reverse">
+      <div class="solution-text">
+        <h3>Cover the full relocation cycle through our vendor network</h3>
+        <ul class="solution-bullets">
+          <li>WorkFlex connects you to a network of trusted partners for settling-in services — housing, local registration, banking, and more</li>
+          <li>Partner access is coordinated through the WorkFlex platform, so the handoff is seamless and the employee experience stays consistent</li>
+          <li>You get one process, one point of contact — from right-to-work check to the employee's first day fully settled in</li>
+        </ul>
+      </div>
+      <div class="solution-visual" style="flex-direction:column;align-items:center;justify-content:center;padding:32px;height:auto;gap:0;">
+        <div style="position:relative;width:260px;height:260px;">
+          <!-- Center hub -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;background:#1a9e8f;border-radius:12px;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 4px 16px rgba(26,158,143,0.4);">
+            <span style="color:white;font-size:10px;font-weight:700;text-align:center;line-height:1.2;">Work<br>Flex</span>
+          </div>
+          <!-- Connector lines (SVG) -->
+          <svg style="position:absolute;top:0;left:0;width:100%;height:100%;" viewBox="0 0 260 260">
+            <line x1="130" y1="130" x2="130" y2="28" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="130" y1="130" x2="232" y2="130" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="130" y1="130" x2="130" y2="232" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="130" y1="130" x2="28" y2="130" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="130" y1="130" x2="214" y2="46" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="130" y1="130" x2="46" y2="46" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          </svg>
+          <!-- Partner nodes -->
+          <div style="position:absolute;top:4px;left:50%;transform:translateX(-50%);background:white;border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;color:#1a1f2e;white-space:nowrap;">Immigration</div>
+          <div style="position:absolute;top:50%;right:4px;transform:translateY(-50%);background:white;border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;color:#1a1f2e;white-space:nowrap;">Housing</div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);background:white;border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;color:#1a1f2e;white-space:nowrap;">Banking</div>
+          <div style="position:absolute;top:50%;left:4px;transform:translateY(-50%);background:white;border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;color:#1a1f2e;white-space:nowrap;">Tax &amp; Legal</div>
+          <div style="position:absolute;top:30px;right:22px;background:white;border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;color:#1a1f2e;white-space:nowrap;">Relocation</div>
+          <div style="position:absolute;top:30px;left:22px;background:white;border-radius:8px;padding:6px 10px;font-size:10px;font-weight:700;color:#1a1f2e;white-space:nowrap;">Insurance</div>
+        </div>
+        <div style="color:rgba(255,255,255,0.5);font-size:11px;margin-top:12px;text-align:center;">All coordinated through WorkFlex — one point of contact</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FEATURES — Before / During / After
+══════════════════════════════════════════ -->
+<section class="features">
+  <div class="section-inner">
+    <div class="eyebrow">Solution</div>
+    <h2 class="section-title">End-to-end support across every<br>visa and immigration case</h2>
+
+    <div class="phase-tabs">
+      <div class="phase-tab-group">
+        <button class="phase-tab active" onclick="switchPhase('before')">Before move</button>
+        <button class="phase-tab" onclick="switchPhase('during')">During move</button>
+        <button class="phase-tab" onclick="switchPhase('after')">After move</button>
+      </div>
+    </div>
+
+    <!-- BEFORE -->
+    <div id="phase-before" class="phase-panel active">
+      <div class="feature-cards">
+        <div class="feature-card">
+          <h4>Right-to-Work / Eligibility Check</h4>
+          <ul class="feature-bullets">
+            <li>Know within 1 business day whether an employee has the right to work in the destination</li>
+            <li>Clear Yes/No output — if No, a recommended visa pathway is provided immediately</li>
+            <li>One click to open a visa case directly from the check result</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f0fdf9;border:1.5px solid #1a9e8f;border-radius:10px;height:auto;padding:14px;opacity:1;flex-direction:column;gap:6px;align-items:stretch;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:10px;font-weight:700;color:#1a9e8f;">RTW RESULT</span>
+              <span style="font-size:10px;color:#6b7280;">🇺🇸 → 🇩🇪</span>
+            </div>
+            <div style="font-size:14px;font-weight:700;color:#1a9e8f;">✓ Eligible to work</div>
+            <div style="font-size:11px;color:#374151;">EU Blue Card pathway recommended</div>
+            <div style="font-size:10px;color:#6b7280;margin-top:2px;">Result delivered in 1 business day</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h4>Immigration &amp; Visa Assessment</h4>
+          <ul class="feature-bullets">
+            <li>Most suitable work permit and visa pathway identified upfront</li>
+            <li>Based on nationality, role, qualifications, and destination country</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:0;align-items:stretch;">
+            <div style="font-size:10px;font-weight:700;color:#6b7280;letter-spacing:0.5px;margin-bottom:8px;">VISA PATHWAY ASSESSMENT</div>
+            <div style="display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:11px;">
+              <span style="color:#6b7280;">Nationality</span><span style="font-weight:600;color:#1a1f2e;">Japanese</span>
+              <span style="color:#6b7280;">Destination</span><span style="font-weight:600;color:#1a1f2e;">Germany</span>
+              <span style="color:#6b7280;">Role</span><span style="font-weight:600;color:#1a1f2e;">VP Engineering</span>
+              <span style="color:#6b7280;">Permit type</span><span style="font-weight:600;color:#1a9e8f;">EU Blue Card</span>
+              <span style="color:#6b7280;">Est. timeline</span><span style="font-weight:600;color:#1a1f2e;">8–12 weeks</span>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h4>Dependent &amp; Family Visa Planning</h4>
+          <ul class="feature-bullets">
+            <li>Upfront guidance on family relocation requirements</li>
+            <li>Dependent applications run in parallel — not as an afterthought</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:6px;align-items:stretch;">
+            <div style="font-size:10px;font-weight:700;color:#6b7280;letter-spacing:0.5px;margin-bottom:4px;">FAMILY VISA OVERVIEW</div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #e5e7eb;">
+              <span style="font-size:14px;">👤</span><div style="flex:1"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Main applicant</div><div style="font-size:10px;color:#6b7280;">Work permit</div></div><span style="font-size:10px;font-weight:600;color:#1a9e8f;">✓ Submitted</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #e5e7eb;">
+              <span style="font-size:14px;">👤</span><div style="flex:1"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Spouse</div><div style="font-size:10px;color:#6b7280;">Dependent visa</div></div><span style="font-size:10px;font-weight:600;color:#1a9e8f;">✓ Submitted</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0;">
+              <span style="font-size:14px;">👶</span><div style="flex:1"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Child (minor)</div><div style="font-size:10px;color:#6b7280;">Dependent visa</div></div><span style="font-size:10px;font-weight:600;color:#f59e0b;">In progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DURING -->
+    <div id="phase-during" class="phase-panel">
+      <div class="feature-cards">
+        <div class="feature-card">
+          <h4>Work Permit &amp; Visa Application Management</h4>
+          <ul class="feature-bullets">
+            <li>Document preparation, form completion, and authority submissions</li>
+            <li>End-to-end tracking until the permit is confirmed</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:0;align-items:stretch;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:700;color:#1a1f2e;">Task tracker</span>
+              <span style="font-size:10px;background:#e8f5f3;color:#1a9e8f;padding:2px 8px;border-radius:100px;font-weight:600;">To do 8</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:7px 10px;"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Submit work permit application</div><div style="font-size:10px;color:#6b7280;">Due: 25/04/2026 · Assigned to: WorkFlex</div></div>
+              <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:7px 10px;"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Confirm consulate appointment</div><div style="font-size:10px;color:#6b7280;">Due: 28/04/2026 · Assigned to: WorkFlex</div></div>
+              <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:7px 10px;opacity:0.5;"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Upload passport copy</div><div style="font-size:10px;color:#6b7280;">Due: 30/04/2026 · Assigned to: Employee</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h4>Authority Coordination</h4>
+          <ul class="feature-bullets">
+            <li>WorkFlex owns all communication — HR doesn't need to chase</li>
+            <li>Real-time status updates at every milestone</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:8px;align-items:stretch;">
+            <div style="font-size:10px;font-weight:700;color:#6b7280;letter-spacing:0.5px;">AUTHORITY COORDINATION</div>
+            <div style="display:flex;align-items:center;gap:0;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <div style="width:22px;height:22px;border-radius:50%;background:#1a9e8f;display:flex;align-items:center;justify-content:center;color:white;font-size:10px;">✓</div>
+                <div style="width:2px;height:16px;background:#1a9e8f;"></div>
+              </div>
+              <div style="margin-left:10px;margin-bottom:18px;font-size:11px;"><span style="font-weight:600;color:#1a1f2e;">Application submitted</span><br><span style="color:#6b7280;">14 Apr 2026</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <div style="width:22px;height:22px;border-radius:50%;background:#1a9e8f;display:flex;align-items:center;justify-content:center;color:white;font-size:10px;">✓</div>
+                <div style="width:2px;height:16px;background:#d1d5db;"></div>
+              </div>
+              <div style="margin-left:10px;margin-bottom:18px;font-size:11px;"><span style="font-weight:600;color:#1a1f2e;">Authority acknowledged</span><br><span style="color:#6b7280;">17 Apr 2026</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0;">
+              <div style="width:22px;height:22px;border-radius:50%;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;"></div>
+              <div style="margin-left:10px;font-size:11px;"><span style="font-weight:600;color:#9ca3af;">Permit decision</span><br><span style="color:#9ca3af;">Est. 12 May 2026</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h4>Document Preparation &amp; Review</h4>
+          <ul class="feature-bullets">
+            <li>Every required document identified, prepared, and reviewed before submission</li>
+            <li>No chasing, no missed requirements, no last-minute scrambles</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:5px;align-items:stretch;">
+            <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:#1a1f2e;margin-bottom:4px;"><span>VISA DOCUMENTS</span><span style="color:#1a9e8f;font-weight:600;text-decoration:underline;">Download all</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;font-weight:500;color:#1a1f2e;flex:1;">Work permit application.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;font-weight:500;color:#1a1f2e;flex:1;">Employer sponsorship letter.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;font-weight:500;color:#1a1f2e;flex:1;">Degree recognition certificate.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;opacity:0.5;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;font-weight:500;color:#1a1f2e;flex:1;">Dependent visa application.pdf</span><span style="font-size:9px;color:#9ca3af;">Pending</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="phase-after" class="phase-panel">
+      <div class="feature-cards">
+        <div class="feature-card">
+          <h4>Local Registration Support</h4>
+          <ul class="feature-bullets">
+            <li>Guidance on local registration where required as part of the visa process</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:5px;align-items:stretch;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-size:11px;font-weight:700;color:#1a1f2e;">Registration tasks</span>
+              <span style="font-size:10px;background:#e8f5f3;color:#1a9e8f;padding:2px 8px;border-radius:100px;font-weight:600;">To do 2</span>
+            </div>
+            <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:7px 10px;"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Register with local municipality</div><div style="font-size:10px;color:#6b7280;">Due: 05/05/2026 · Assigned to: WorkFlex</div></div>
+            <div style="background:white;border:1px solid #e5e7eb;border-radius:6px;padding:7px 10px;opacity:0.5;"><div style="font-size:11px;font-weight:600;color:#1a1f2e;">Confirm local registration complete</div><div style="font-size:10px;color:#6b7280;">Due: 10/05/2026 · Assigned to: HR</div></div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h4>Ongoing Visa Tracker</h4>
+          <ul class="feature-bullets">
+            <li>Proactive alerts when permit renewals are approaching</li>
+            <li>Real-time visibility on the status of all active visa cases</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:6px;align-items:stretch;">
+            <div style="display:flex;align-items:center;gap:8px;background:#fef9ec;border:1px solid #fbbf24;border-radius:7px;padding:8px 10px;margin-bottom:2px;">
+              <span style="font-size:14px;">🔔</span>
+              <div style="font-size:11px;font-weight:600;color:#1a1f2e;">Permit renewal due in 60 days<br><span style="font-weight:400;color:#6b7280;">Marcus Weber · Norway</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:3px 8px;font-size:11px;">
+              <span style="color:#6b7280;">Sarah Chen 🇩🇪</span><span style="font-weight:600;color:#1a9e8f;">● Active</span>
+              <span style="color:#6b7280;">Marcus Weber 🇳🇴</span><span style="font-weight:600;color:#f59e0b;">● Renewal due</span>
+              <span style="color:#6b7280;">Aiko Tanaka 🇩🇪</span><span style="font-weight:600;color:#1a9e8f;">● Active</span>
+            </div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <h4>All Visa Documents in One Place</h4>
+          <ul class="feature-bullets">
+            <li>Every document from every visa case stored centrally and accessible at any time</li>
+            <li>Go back to any case, any document, whenever you need it</li>
+          </ul>
+          <div class="feature-card-visual" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;height:auto;padding:12px;opacity:1;flex-direction:column;gap:5px;align-items:stretch;">
+            <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700;color:#1a1f2e;margin-bottom:4px;"><span>VISA DOCUMENTS</span><span style="color:#1a9e8f;font-weight:600;text-decoration:underline;">Download all</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;color:#1a1f2e;flex:1;">Work permit.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;color:#1a1f2e;flex:1;">Right-to-work assessment.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;color:#1a1f2e;flex:1;">Visa application confirmation.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+            <div style="display:flex;align-items:center;gap:7px;padding:5px 0;"><span style="background:#ef4444;color:white;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;flex-shrink:0;">PDF</span><span style="font-size:11px;color:#1a1f2e;flex:1;">Dependent visa — partner.pdf</span><span style="font-size:9px;color:#1a9e8f;">✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BOTTOM CTA
+══════════════════════════════════════════ -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <div class="cta-left">
+      <h2>The permit to work. In place before day one.</h2>
+      <p>WorkFlex handles the full visa and immigration process — from right-to-work check to permit approval — so your employee can start working the moment they arrive.</p>
+      <div class="cta-discover-label">What you'll discover in a demo:</div>
+      <ul class="cta-discover-list">
+        <li><div class="cta-check">✓</div> How right-to-work checks give you clarity before committing to a move</li>
+        <li><div class="cta-check">✓</div> How WorkFlex owns the full visa process — so HR doesn't have to chase</li>
+        <li><div class="cta-check">✓</div> How the ongoing visa tracker keeps every case visible and every renewal on time</li>
+      </ul>
+      <div class="cta-logos">
+        <span class="cta-logo">TUI</span>
+        <span class="cta-logo">Red Bull</span>
+        <span class="cta-logo">dm</span>
+        <span class="cta-logo">ALDI</span>
+      </div>
+    </div>
+
+    <div class="cta-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name*</label>
+          <input type="text" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label>Last name*</label>
+          <input type="text" placeholder="" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Work email*</label>
+          <input type="email" placeholder="" />
+        </div>
+        <div class="form-group">
+          <label>Company name*</label>
+          <input type="text" placeholder="" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Number of employees*</label>
+          <select>
+            <option value="">Please select</option>
+            <option>1–50</option>
+            <option>51–200</option>
+            <option>201–1000</option>
+            <option>1000+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Phone number*</label>
+          <input type="tel" placeholder="" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Country*</label>
+          <select>
+            <option value="">Please select</option>
+            <option>Germany</option>
+            <option>United Kingdom</option>
+            <option>Netherlands</option>
+            <option>Sweden</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Average yearly international moves</label>
+          <select>
+            <option value="">Please select</option>
+            <option>1–5</option>
+            <option>6–20</option>
+            <option>21–50</option>
+            <option>50+</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-consent">
+        <input type="checkbox" id="consent" />
+        <label for="consent">I agree to receive communications from WorkFlex. For more information please review our <a href="#">privacy policy</a>.*</label>
+      </div>
+      <button class="btn-submit">Request appointment</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function switchUC(index) {
+    document.querySelectorAll('.uc-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.uc-content').forEach((c, i) => {
+      c.classList.toggle('active', i === index);
+    });
+  }
+
+  function switchPhase(phase) {
+    document.querySelectorAll('.phase-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.phase-panel').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('phase-' + phase).classList.add('active');
+  }
+</script>
+</body>
+</html>
